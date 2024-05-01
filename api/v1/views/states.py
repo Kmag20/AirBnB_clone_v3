@@ -10,11 +10,12 @@ from flask import jsonify, abort, request
 from datetime import datetime
 
 
+
 @app_views.route("/states",
                  methods=['GET', 'POST'],
                  strict_slashes=False)
 def all_states():
-    """ Retrieves the list of all State objects"""
+    """Retrieves the list of all State objects"""
     if request.method == 'POST':
         state_data = request.get_json()
         if not state_data:
@@ -31,7 +32,7 @@ def all_states():
 
 @app_views.route("/states/<state_id>", methods=['GET', 'PUT'])
 def get_state(state_id):
-    """ Retrieves a single state object """
+    """Retrieves a single state object"""
     state_obj = storage.get(State, state_id)
     if state_obj is None:
         abort(404)
@@ -51,7 +52,7 @@ def get_state(state_id):
 
 @app_views.route('/states/<state_id>', methods=['DELETE'])
 def delete_state(state_id):
-    """ Deletes a state object """
+    """Deletes a state object"""
     state_obj = storage.get(State, state_id)
     if state_obj is None:
         abort(404)
