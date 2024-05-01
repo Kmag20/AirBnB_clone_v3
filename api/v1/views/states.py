@@ -10,7 +10,6 @@ from flask import jsonify, abort, request
 from datetime import datetime
 
 
-
 @app_views.route("/states",
                  methods=['GET', 'POST'],
                  strict_slashes=False)
