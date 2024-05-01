@@ -67,9 +67,11 @@ def create_review(place_id):
         abort(400, "Missing text")
     if "user_id" not in review_data:
         abort(400, "Missing user_id")
-    user_obj = storage.get(User, review_data['user_id'])
+    user_obj = storage.get(User, review_data.get("user_id"))
     if user_obj is None:
         abort(404)
+
+    review_data["place_id"] = place_obj.id
     new_review = Review(**review_data)
     new_review.save()
     return jsonify(new_review.to_dict()), 201
