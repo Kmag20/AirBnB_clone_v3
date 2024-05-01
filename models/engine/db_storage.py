@@ -77,12 +77,12 @@ class DBStorage:
 
     def get(self, cls, id):
         """method to retrieve one object"""
-        key = cls.__name__+ '.' + id
+        key = cls.__name__ + '.' + id
         try:
             return self.all(cls)[key]
         except KeyError:
             return None
-        
+
     def count(self, cls=None):
         """count the number of objects in storage"""
         return len(self.all(cls))
