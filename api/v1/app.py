@@ -13,7 +13,7 @@ app.register_blueprint(app_views)
 
 
 """Create the CORS instance to allow IPS"""
-CORS(app, resources={r"/": {"origins": "0.0.0.0"}})
+CORS(app, origins=['0.0.0.0'])
 
 
 @app.teardown_appcontext
